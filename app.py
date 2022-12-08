@@ -254,16 +254,15 @@ def predict():
 
 	# color_image = request.files['color']
 	# image = PIL.Image.open(color_image) if color_image is not None else None
-	image = None
-	depth = None
-	try:
-		color_image = request.files['color']
-		depth_image = request.files['depth']
-		# depth = PIL.Image.open(depth_image)
-		image = np.asarray(PIL.Image.open(color_image) if color_image is not None else None) # convert to ndarray
-		depth = np.asarray(PIL.Image.open(depth_image)) # convert to ndarray
-	except:
-		depth = request.form['depth']
+	color_image = request.files['color']
+	image = np.asarray(PIL.Image.open(color_image) if color_image is not None else None)
+	depth = request.form['depth']
+	# try:
+	# 	depth_image = request.files['depth']
+	# 	# depth = PIL.Image.open(depth_image)
+	# 	depth = np.asarray(PIL.Image.open(depth_image)) # convert to ndarray
+	# except:
+	# 	depth = request.form['depth']
 
 	prompt = request.args.get('prompt')
 	negative_prompt = request.args.get('negative_prompt')
