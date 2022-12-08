@@ -254,9 +254,10 @@ def predict():
 
 	# color_image = request.files['color']
 	# image = PIL.Image.open(color_image) if color_image is not None else None
-	color_image = request.files['color']
-	image = np.asarray(PIL.Image.open(color_image) if color_image is not None else None)
-	depth = request.files['depth']
+	color_req = request.files['color']
+	image = np.asarray(PIL.Image.open(color_req) if color_req is not None else None)
+	depth_req = request.files['depth']
+	depth = np.asarray(PIL.Image.open(depth_req))
 	# try:
 	# 	depth_image = request.files['depth']
 	# 	# depth = PIL.Image.open(depth_image)
