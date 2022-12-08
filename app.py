@@ -297,11 +297,8 @@ def predict():
 	output = pipe(
 		prompt=prompt,
 		depth_image=depth_image,
-		# image=image.resize(depth.size),
 		image=init_image,
 		strength=strength,
-		# width=depth.size[0],
-		# height=depth.size[1],
 		width=rounded_size[0],
 		height=rounded_size[1],
 		num_inference_steps=steps,
@@ -312,61 +309,6 @@ def predict():
 		generator=generator,
 		latents=None,
 	)
-
-	# pipeline: Pipeline,
-	# model = ''
-	# scheduler = Scheduler
-	# optimizations = Optimizations()
-	# depth = NDArray | str,
-	# image = NDArray | str | None,
-	# strength = 0.1
-	# steps = 1
-	# seed = 1
-	# cfg_scale = 0.5
-	# use_negative_prompt = False
-	# negative_prompt = 'test'
-	# step_preview_mode = 'Fast' # not needed
-	# # **kwargs
-
-	# # RNG
-	# generator = torch.Generator(DEVICE)
-	# if seed is None:
-	# 	seed = random.randrange(0, np.iinfo(np.uint32).max)
-	# generator = generator.manual_seed(seed)
-
-	# # Inference
-	# image_arr = np.asarray(PIL.Image.open(COLOR_IMAGE) if COLOR_IMAGE is not None else None)
-	# depth_arr = np.asarray(PIL.Image.open(DEPTH_IMAGE))
-	# rounded_size = (
-	# 	int(8 * (depth_arr.shape[1] // 8)),
-	# 	int(8 * (depth_arr.shape[0] // 8)),
-	# )
-	# depth_image = PIL.ImageOps.flip(PIL.Image.fromarray(np.uint8(depth_arr * 255), 'L')).resize(rounded_size)
-	# init_image = None if image_arr is None else (PIL.Image.open(image_arr) if isinstance(image_arr, str) else PIL.Image.fromarray(image_arr.astype(np.uint8))).convert('RGB').resize(rounded_size)
-	# output = pipe( $# yield from pipe(
-	# 	prompt=PROMPT,
-	# 	depth_image=depth,
-	# 	image=image,
-	# 	strength=strength,
-	# 	width=rounded_size[0],
-	# 	height=rounded_size[1],
-	# 	num_inference_steps=steps,
-	# 	guidance_scale=cfg_scale,
-	# 	negative_prompt=negative_prompt if use_negative_prompt else None,
-	# 	num_images_per_prompt=1,
-	# 	eta=0.0,
-	# 	generator=generator,
-	# 	latents=None,
-	# 	output_type='pil',
-	# 	return_dict=True,
-	# 	callback=None,
-	# 	callback_steps=1,
-	# 	step_preview_mode=step_preview_mode
-	# )
-
-	print(output)
-
-	output.images[0].save('test.png')
 
 	img_byte_arr = io.BytesIO()
 	output.images[0].save(img_byte_arr, format='PNG')
