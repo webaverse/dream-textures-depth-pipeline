@@ -9,10 +9,14 @@
 ## Usage
 
 - Run python app `python app.py`
-- Make a POST request to the server url or ip
+- Make a POST request to the server url or ip, fill in the parameters in the url and send the color image and the depth image by form data.
 
 ```
 POST http://{serverip:port | url}/depth/predict?prompt=<promtp>&strength=<float>&steps=<int>&cfg_scale=<float>&seed=<int>
+
+Example:
+
+POST http://216.153.52.125:8081/depth/predict?prompt=photo of a baby astronaut space walking at the international space station with earth seeing from above in the background&strength=1.0&steps=50&cfg_scale=7.5&seed=50
 ```
 
 ### Params
