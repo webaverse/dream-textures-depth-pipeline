@@ -1,9 +1,18 @@
 # Dream-Textures-Depth-Pipeline
 
+## Installation
+
+- Install conda and create your virtual enviroment.
+- Install torch using `conda install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia`
+- Install required packages by running `pip install -r requirements.txt`
+
 ## Usage
 
+- Run python app `python app.py`
+- Make a POST request to the server url or ip
+
 ```
-POST http://216.153.52.125:8081/depth/predict?prompt=<promtp>&strength=<float>&steps=<int>&cfg_scale=<float>&seed=<int>
+POST http://{serverip:port | url}/depth/predict?prompt=<promtp>&strength=<float>&steps=<int>&cfg_scale=<float>&seed=<int>
 ```
 
 ### Params
